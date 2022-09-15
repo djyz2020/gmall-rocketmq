@@ -1,6 +1,7 @@
 package consumer;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.consumer.DefaultMQPushConsumer;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyContext;
 import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
@@ -14,12 +15,13 @@ import java.util.List;
 import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
+@Slf4j
 public class AsyncConsumer {
     public static void main(String[] args) {
 
-        List<Future<?>> futures = new ArrayList<>();
-        for (int i = 0; i < 8; i++) {
-            FutureTask task = new FutureTask(() -> {
+        for (int i = 0; i < 50; i++) {
+            ThreadPoolUtil.consumerThreadPool.submit(() -> {
+                System.out.println("thread start: " + Thread.currentThread().getName());
                 // Instantiate with specified consumer group name.
                 DefaultMQPushConsumer consumer = new DefaultMQPushConsumer("TopicTestGroup");
 
@@ -27,12 +29,14 @@ public class AsyncConsumer {
                 consumer.setNamesrvAddr("192.168.126.130:9876");
 
                 // Subscribe one more more topics to consume.
+                System.out.println("subscribe topic [TopicTest] ");
                 try {
                     consumer.subscribe("TopicTest", "*");
                 } catch (MQClientException e) {
                     e.printStackTrace();
                 }
                 // Register callback to execute on arrival of messages fetched from brokers.
+                System.out.println("register message listener.");
                 consumer.registerMessageListener(new MessageListenerConcurrently() {
 
                     @Override
@@ -40,7 +44,7 @@ public class AsyncConsumer {
                                                                     ConsumeConcurrentlyContext context) {
                         System.out.printf("%s Receive New Messages: %s %n", Thread.currentThread().getName(), msgs);
                         /*try {
-                            Thread.sleep(5);
+                            Thread.sleep(1);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }*/
@@ -50,23 +54,22 @@ public class AsyncConsumer {
 
                 //Launch the consumer instance.
                 try {
+                    System.out.println("consumer begin to start.");
                     consumer.start();
                 } catch (MQClientException e) {
                     e.printStackTrace();
+                } finally {
+                    System.out.println("consumer start success.");
                 }
-                System.out.printf("Consumer Started.%n");
-                return "SUCCESS";
             });
-
-            Future<?> future = ThreadPoolUtil.consumerThreadPool.submit(task);
-            futures.add(future);
         }
-        for (Future<?> future : futures) {
+
+        System.out.println("all consumer threads start success.");
+
+        while (true) {
             try {
-               future.get();
+                Thread.sleep(5000);
             } catch (InterruptedException e) {
-                e.printStackTrace();
-            } catch (ExecutionException e) {
                 e.printStackTrace();
             }
         }

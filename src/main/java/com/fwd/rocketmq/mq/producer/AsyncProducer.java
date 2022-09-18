@@ -1,4 +1,4 @@
-package com.fwd.rocketmq.producer;
+package com.fwd.rocketmq.mq.producer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQClientException;

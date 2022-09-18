@@ -1,4 +1,4 @@
-package com.fwd.rocketmq.consumer;
+package com.fwd.rocketmq.mq.consumer;
 
 
 import lombok.extern.slf4j.Slf4j;

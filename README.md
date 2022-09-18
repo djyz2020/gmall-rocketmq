@@ -18,3 +18,18 @@ spring.devtools.restart.additional-paths=src/main/java
 1) File -> Settings -> Compiler -> Build Project automatically 进行勾选
 2) ctrl + shift + alt + /, 选择Registry, 勾上Compiler autoMake allow when app running
 ```
+
+##4.启动consumer
+```
+启动：com.fwd.rocketmq.mq.consumer.TransactionConsumer
+```
+
+##5.启动RocketmqApplication
+```
+启动：com.fwd.rocketmq.RocketmqApplication
+```
+
+6.调用接口发送RocketMQ事务消息
+```
+服务接口：http://[IP]:[PORT]/rocket/sendMessage/{message}
+```

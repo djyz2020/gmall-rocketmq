@@ -28,7 +28,8 @@ public class DataController {
     @GetMapping("/sendMessage/{message}")
     public Object sendMessage(@PathVariable String message) {
         String status = producer.sendMessage(message + ":" + new Date());
-        Map<String, String> map = new HashMap<>();
+        Map<String, Object> map = new HashMap<>();
+        map.put("code", 200);
         map.put("status", status);
         map.put("message", message);
         return map;

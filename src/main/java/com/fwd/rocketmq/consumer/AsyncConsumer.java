@@ -1,4 +1,4 @@
-package consumer;
+package com.fwd.rocketmq.consumer;
 
 
 import lombok.extern.slf4j.Slf4j;
@@ -8,12 +8,9 @@ import org.apache.rocketmq.client.consumer.listener.ConsumeConcurrentlyStatus;
 import org.apache.rocketmq.client.consumer.listener.MessageListenerConcurrently;
 import org.apache.rocketmq.client.exception.MQClientException;
 import org.apache.rocketmq.common.message.MessageExt;
-import utils.ThreadPoolUtil;
+import com.fwd.rocketmq.utils.ThreadPoolUtil;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 public class AsyncConsumer {

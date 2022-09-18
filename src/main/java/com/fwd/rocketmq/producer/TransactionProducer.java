@@ -1,4 +1,4 @@
-package producer;
+package com.fwd.rocketmq.producer;
 
 import org.apache.rocketmq.client.exception.MQBrokerException;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -9,7 +9,7 @@ import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.common.message.MessageExt;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
 import org.apache.rocketmq.remoting.exception.RemotingException;
-import utils.ThreadPoolUtil;
+import com.fwd.rocketmq.utils.ThreadPoolUtil;
 
 import java.io.UnsupportedEncodingException;
 

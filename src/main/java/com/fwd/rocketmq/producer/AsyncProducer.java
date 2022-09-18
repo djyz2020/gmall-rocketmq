@@ -1,4 +1,4 @@
-package producer;
+package com.fwd.rocketmq.producer;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.rocketmq.client.exception.MQClientException;
@@ -6,12 +6,7 @@ import org.apache.rocketmq.client.producer.DefaultMQProducer;
 import org.apache.rocketmq.client.producer.SendResult;
 import org.apache.rocketmq.common.message.Message;
 import org.apache.rocketmq.remoting.common.RemotingHelper;
-import utils.ThreadPoolUtil;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
+import com.fwd.rocketmq.utils.ThreadPoolUtil;
 
 @Slf4j
 public class AsyncProducer {

@@ -15,6 +15,6 @@ spring.devtools.restart.additional-paths=src/main/java
 
 ## 3.IDEA配置
 ```
-1) File->Settings->Compiler->Build Project automatically 进行勾选
-2) ctrl + shift + alt + / ,选择Registry,勾上 Compiler autoMake allow when app running
+1) File -> Settings -> Compiler -> Build Project automatically 进行勾选
+2) ctrl + shift + alt + /, 选择Registry, 勾上Compiler autoMake allow when app running
 ```

@@ -115,7 +115,7 @@ spring.devtools.restart.additional-paths=src/main/java
 启动：com.fwd.rocketmq.RocketmqApplication
 ```
 
-6.调用接口发送RocketMQ事务消息
+## 5.调用接口发送RocketMQ事务消息
 ```
 服务接口：http://[IP]:[PORT]/rocket/sendMessage/{message}
 ```
